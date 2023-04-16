@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/class/task';
 import { CrudService } from 'src/app/services/crud.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-todo',
@@ -19,7 +21,7 @@ export class TodoComponent implements OnInit {
   editTaskValue : string = '';
   editTaskIsDone : boolean = false;
 
-  constructor(private crudservice : CrudService) { }
+  constructor(private crudservice : CrudService,private http : HttpClient) { }
 
   ngOnInit(): void {
     this.taskObj = new Task();
@@ -34,6 +36,7 @@ export class TodoComponent implements OnInit {
   getAllTasks(){
     this.crudservice.getAllTask().subscribe(
       data=>{
+        console.log('data',data)
         this.taskArr = data;
     },
     err=>{
@@ -70,6 +73,8 @@ export class TodoComponent implements OnInit {
     )
   }
 
+
+
   /** LET TASKOBG == SELECTED TASK && SHOW SELECTED TASK NAME*/
   call(etask:Task){
     this.taskObj = etask;
@@ -92,6 +97,8 @@ export class TodoComponent implements OnInit {
     )
   }
 
+  // ====================================== //
+  /** UPDATE TASK STATUS -- ANOTHER METHOD */
   checkTask(etask:Task){
     etask.is_done = !etask.is_done;
     this.crudservice.editTask(etask).subscribe(

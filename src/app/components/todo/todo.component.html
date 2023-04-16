@@ -23,8 +23,8 @@
                     <div class="m-3" *ngFor="let task of taskArr">
                         <div class="p-2 shadow border">
                             <div class="input-group row ps-3">
-                                <div class="card col-md-8 border-0" style="align-self: center;">{{task.task_name}}</div>
                                 <input class="col" type="checkbox" [checked]="task.is_done" disabled>
+                                <div class="card col-md-8 border-0" style="align-self: center;">{{task.task_name}}</div>
                                 <!-- <input class="col" type="checkbox" [checked]="task.is_done" (change)="checkTask(task)"> -->
                                 <button class="btn btn-outline-primary col me-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="call(task)" >e</button>
                                 <button class="btn btn-outline-danger col" (click)="removeTask(task)" >X</button>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-danger col-12 mb-3" >Clear All</button>
+                    <!-- <button class="btn btn-danger col-12 mb-3"  >Clear All</button> -->
                 </div>
 
                 
